@@ -3,7 +3,7 @@ const app = express();
 
 var PORT = process.env.PORT || 3010
 
-function changUSD(amount) {
+function breakDownUSD(amount) {
   const denominations = [100, 50, 20, 10, 5, 1, 0.25, 0.10, 0.05, 0.01];
   const result = { change: amount };
 
@@ -17,15 +17,57 @@ function changUSD(amount) {
       result.change = result.change.toFixed(2);
     }
   }
-  delete result["change"]
-  return result;
+delete result["change"]
+
+
+  var newObj = convertToString(result)
+
+
+
+  return newObj;
+}
+
+
+// This should be a switch statement
+function convertToString(obj) {
+  var newResult = {}
+  if (obj[100]) {
+    newResult[`hundreds`] = obj[100]
+  }
+  if (obj[50]) {
+    newResult[`fifties`] = obj[50]
+  }
+  if (obj[10]) {
+    newResult[`tens`] = obj[10]
+  }
+  if (obj[5]) {
+    newResult[`fives`] = obj[5]
+  }
+  if (obj[1]) {
+    newResult[`ones`] = obj[1]
+  }
+  if (obj[0.25]) {
+    newResult[`quarters`] = obj[0.25]
+  }
+  if (obj[0.10]) {
+    newResult[`dimes`] = obj[0.10]
+  }
+  if (obj[0.05]) {
+    newResult[`nickels`] = obj[0.05]
+  }
+  if (obj[0.01]) {
+    newResult[`pennies`] = obj[0.01]
+  }
+
+  return newResult;
 }
 
 
 app.get('/:amount', (req, res) => {
    var amount = req.params.amount
   var result = changUSD(amount)
-
+  console.log(req.params.amount, " Is the Amount that came through!")
+  console.log("The results are \n", result)
   res.json(result)
 })
 
