@@ -14,10 +14,10 @@ function changUSD(amount) {
     if (count > 0) {
       result[denomination] = count;
       result.change -= denomination * count;
-      result.change = result.change.toFixed(2); // Round remaining change to two decimal places
+      result.change = result.change.toFixed(2);
     }
   }
-
+  delete result["change"]
   return result;
 }
 
