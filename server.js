@@ -17,7 +17,7 @@ function changeUSD(amount) {
       result.change = result.change.toFixed(2);
     }
   }
-delete result["change"]
+  delete result["change"]
 
 
   var newObj = convertToString(result)
@@ -61,6 +61,7 @@ function convertToString(obj) {
   if (obj[0.01]) {
     newResult[`pennies`] = obj[0.01]
   }
+  newResult[`GitHub Repo:`] = `https://github.com/dpayne5532/TakeHomeBackEnd`
 
   return newResult;
 }
