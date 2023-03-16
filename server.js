@@ -3,7 +3,7 @@ const app = express();
 
 var PORT = process.env.PORT || 3010
 
-function breakDownUSD(amount) {
+function changeUSD(amount) {
   const denominations = [100, 50, 20, 10, 5, 1, 0.25, 0.10, 0.05, 0.01];
   const result = { change: amount };
 
@@ -37,6 +37,9 @@ function convertToString(obj) {
   if (obj[50]) {
     newResult[`fifties`] = obj[50]
   }
+  if (obj[20]) {
+    newResult[`twenties`] = obj[20]
+  }
   if (obj[10]) {
     newResult[`tens`] = obj[10]
   }
@@ -65,7 +68,7 @@ function convertToString(obj) {
 
 app.get('/:amount', (req, res) => {
    var amount = req.params.amount
-  var result = changUSD(amount)
+  var result = changeUSD(amount)
   console.log(req.params.amount, " Is the Amount that came through!")
   console.log("The results are \n", result)
   res.json(result)
