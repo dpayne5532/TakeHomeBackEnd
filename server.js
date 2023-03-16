@@ -61,7 +61,7 @@ function convertToString(obj) {
   if (obj[0.01]) {
     newResult[`pennies`] = obj[0.01]
   }
-  newResult[`GitHub Repo:`] = `https://github.com/dpayne5532/TakeHomeBackEnd`
+  newResult[`GitHubRepo`] = `https://github.com/dpayne5532/TakeHomeBackEnd`
 
   return newResult;
 }
