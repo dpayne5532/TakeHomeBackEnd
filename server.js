@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
+const fs = require('fs'),
+  https = require('https');
 
-var PORT = process.env.PORT || 3010
+var PORT = process.env.PORT || 8080
+
+
 
 function changeUSD(amount) {
   const denominations = [100, 50, 20, 10, 5, 1, 0.25, 0.10, 0.05, 0.01];
@@ -19,14 +23,10 @@ function changeUSD(amount) {
   }
   delete result["change"]
 
-
   var newObj = convertToString(result)
-
-
 
   return newObj;
 }
-
 
 // This should be a switch statement
 function convertToString(obj) {
@@ -61,11 +61,10 @@ function convertToString(obj) {
   if (obj[0.01]) {
     newResult[`pennies`] = obj[0.01]
   }
-  newResult[`GitHubRepo`] = `https://github.com/dpayne5532/TakeHomeBackEnd`
+  newResult[`gitHubRepo`] = `https://github.com/dpayne5532/TakeHomeBackEnd`
 
   return newResult;
 }
-
 
 app.get('/:amount', (req, res) => {
    var amount = req.params.amount
@@ -75,8 +74,8 @@ app.get('/:amount', (req, res) => {
   res.json(result)
 })
 
+ app.listen(PORT, () => console.log(`---===   Server listening on PORT ${PORT}   ===---`))
 
 
 
-app.listen(PORT, () => console.log(`---===   Server listening on PORT ${PORT}   ===---`))
 
