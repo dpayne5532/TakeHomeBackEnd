@@ -28,7 +28,7 @@ function changeUSD(amount) {
   return newObj;
 }
 
-// This should be a switch statement
+
 function convertToString(obj) {
   var newResult = {}
   if (obj[100]) {
