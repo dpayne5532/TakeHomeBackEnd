@@ -1,13 +1,12 @@
-# fly.toml file generated for frosty-glade-1979 on 2023-03-16T09:01:35-06:00
+# fly.toml file generated for damp-lake-327 on 2023-04-16T15:16:25-06:00
 
-app = "frosty-glade-1979"
+app = "damp-lake-327"
 kill_signal = "SIGINT"
 kill_timeout = 5
 primary_region = "den"
 processes = []
 
 [env]
-  PORT = "8080"
 
 [experimental]
   auto_rollback = true
